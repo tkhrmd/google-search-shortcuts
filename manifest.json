@@ -1,5 +1,5 @@
 {
-  "name": "google-search-shortcuts",
+  "name": "Google Search Shortcuts",
   "version": "0.1",
   "manifest_version": 2,
   "description": "Enable Vim/vi-like navigation for the Google Search result page.",
