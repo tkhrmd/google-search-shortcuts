@@ -41,9 +41,32 @@ const handlers = {
   '/': search,
 };
 
+const formElements = [
+  'button',
+  'datalist',
+  'fieldset',
+  'input',
+  'keygen',
+  'label',
+  'legend',
+  'meter',
+  'optgroup',
+  'option',
+  'output',
+  'progress',
+  'select',
+  'textarea'
+];
+
+const modKey = (e) => e.altKey || e.ctrlKey || e.metaKey || e.shiftKey;
+
+const typing = () => {
+  const el = document.activeElement;
+  return el.form || formElements.indexOf(el.tagName.toLowerCase()) > -1;
+};
+
 const dispatch = (e) => {
-  if (document.activeElement.form) return;
-  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  if (modKey(e) || typing()) return;
 
   const handler = handlers[e.key];
   if (!handler) return;
