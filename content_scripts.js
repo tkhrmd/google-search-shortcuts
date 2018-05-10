@@ -5,22 +5,24 @@ const resultsSelector = [
   '#navcnt td a', // page numbers
 ].join(',');
 
-const results = Array.from(document.querySelectorAll(resultsSelector));
+const getResults = () => Array.from(document.querySelectorAll(resultsSelector));
 
-const activeResultIndex = () => results.indexOf(document.activeElement);
+const activeIndexOf = (arr) => arr.indexOf(document.activeElement);
 
 const click = (el) => el && el.click();
 
 const focus = (el) => el && el.focus();
 
 const prevResult = () => {
-  const idx = Math.max(activeResultIndex() - 1, 0);
-  focus(results[idx]);
+  const res = getResults();
+  const idx = Math.max(activeIndexOf(res) - 1, 0);
+  focus(res[idx]);
 };
 
 const nextResult = () => {
-  const idx = activeResultIndex() + 1;
-  focus(results[idx]);
+  const res = getResults();
+  const idx = activeIndexOf(res) + 1;
+  focus(res[idx]);
 };
 
 const prevPage = () => click(document.querySelector('#navcnt td:first-child a'));
