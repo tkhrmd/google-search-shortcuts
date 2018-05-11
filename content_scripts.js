@@ -1,7 +1,7 @@
 const resultsSelector = [
   '.ssp.card-section a', // did you mean ...
   '.sp_cnt.card-section a', // showing results for ...
-  '.r a:first-child', // results
+  '.r a:first-of-type', // results
   '#navcnt td a', // page numbers
 ].join(',');
 
@@ -30,7 +30,7 @@ const prevPage = () => click(document.querySelector('#navcnt td:first-child a'))
 const nextPage = () => click(document.querySelector('#navcnt td:last-child a'));
 
 const search = () => {
-  const el = document.querySelector('#lst-ib');
+  const el = document.getElementById('lst-ib');
   focus(el);
   el && el.setSelectionRange(0, el.value.length);
 };
